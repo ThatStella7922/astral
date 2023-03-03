@@ -1,3 +1,4 @@
 py-cord
+py-cpuinfo
 requests
 python-dotenv

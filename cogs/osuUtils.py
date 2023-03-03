@@ -1,14 +1,17 @@
 import discord
 import requests
 from requests.exceptions import HTTPError
+from discord.commands import SlashCommandGroup
 from discord.ext import commands
 
 class osuUtils(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @discord.slash_command(name="latestosu",description="Gets info about the latest version of osu!lazer")
-    async def latestosu(self, ctx): 
+    osuUtilsGroup = SlashCommandGroup("osu", "Utilities related to osu!")
+
+    @osuUtilsGroup.command(name="getlatest",description="Gets info about the latest version of osu!lazer")
+    async def getlatest(self, ctx): 
         try:
             apiReq = requests.get('https://api.github.com/repos/ppy/osu/releases/latest')
             jsonResponse = apiReq.json()
