@@ -25,6 +25,7 @@ class fun(commands.Cog):
 
     @funGroup.command(name="about",description=f"Prints information about {botName}")
     async def about(self, ctx): 
+        await ctx.defer()
         await ctx.respond(f"*{botName}* {botVersion} ({botVersionDate})\nHost CPU: {cpuinfo.get_cpu_info()['brand_raw']} ({cpuinfo.get_cpu_info()['arch']})\nHost Python: {cpuinfo.get_cpu_info()['python_version']}")
 
 def setup(bot):
