@@ -13,8 +13,6 @@ TOKEN = <your bot token>
 In the cogs folder, create another .env containing the following:
 ```
 # basic bot info
-botVersion = <a version>
-botVersionDate = <the date, ex: March 3 2023>
 botName = <your bot name>
 ```
 This should satisfy any static info that is stored in dotenvs.

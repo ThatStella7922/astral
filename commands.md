@@ -2,56 +2,65 @@
 # *astral* Commands
 Commands are organized into cogs, and the bot only uses slash commands, which is why no prefix is specified.
 
-<table>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
 <thead>
   <tr>
-    <th>Cog</th>
-    <th>Group</th>
-    <th>Command</th>
-    <th>Arguments</th>
-    <th>Example Output</th>
-    <th>Notes</th>
+    <th class="tg-0pky">Cog</th>
+    <th class="tg-0pky">Group</th>
+    <th class="tg-0pky">Command</th>
+    <th class="tg-0pky">Arguments</th>
+    <th class="tg-0pky">Example Output</th>
+    <th class="tg-0pky">Notes</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td>osuUtils</td>
-    <td>osu</td>
-    <td>`getlatest`</td>
-    <td>*none*</td>
-    <td>
-    ```
-    The latest version of osu!lazer is 2023.301.0, you can download it at https://github.com/ppy/osu/releases/tag/2023.301.0.
-    Changelog: https://osu.ppy.sh/home/changelog/lazer/2023.301.0
-    ```
-    </td>
-    <td></td>
+    <td class="tg-0pky">lookupUtils</td>
+    <td class="tg-0pky">lookup</td>
+    <td class="tg-0pky">http</td>
+    <td class="tg-0pky">httpcode (<span style="font-weight:bold">int</span>)</td>
+    <td class="tg-0pky">HTTP status code 200: OK (Request fulfilled, document follows)</td>
+    <td class="tg-0pky"></td>
   </tr>
   <tr>
-    <td>fun</td>
-    <td>fun</td>
-    <td>`ping`</td>
-    <td>*none*</td>
-    <td>
-    ```
-    latency was 93ms, have a stellar day
-    ```
-    </td>
-    <td></td>
+    <td class="tg-0pky">lookupUtils</td>
+    <td class="tg-0pky">lookup</td>
+    <td class="tg-0pky">httpcat</td>
+    <td class="tg-0pky">httpcode (<span style="font-weight:bold">int</span>)</td>
+    <td class="tg-0pky">CAT!!1!11!! HTTP status code 500: Internal Server Error (Server got itself into trouble)<br><img src="https://http.cat/500.jpg" alt="astral will attempt to embed an image from http.cat corresponding to your status code" width="285" height="213"></td>
+    <td class="tg-0pky">astral will attempt to embed an image from http.cat corresponding to your status code</td>
   </tr>
   <tr>
-    <td>fun</td>
-    <td>fun</td>
-    <td>`about`</td>
-    <td>*none*</td>
-    <td>
-    ```
-    astral 1.0 (March 3 2023)
-    Host CPU: Apple M1 Max (ARM_8)
-    Host Python: 3.10.6.final.0 (64 bit)
-    ```
-    </td>
-    <td></td>
+    <td class="tg-0pky">osuUtils</td>
+    <td class="tg-0pky">osu</td>
+    <td class="tg-0pky">getlatest</td>
+    <td class="tg-0pky">*none*</td>
+    <td class="tg-0pky">The latest version of osu!lazer is 2023.301.0, you can download it at https://github.com/ppy/osu/releases/tag/2023.301.0.<br>Changelog: https://osu.ppy.sh/home/changelog/lazer/2023.301.0</td>
+    <td class="tg-0pky"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">fun</td>
+    <td class="tg-0pky">fun</td>
+    <td class="tg-0pky">ping</td>
+    <td class="tg-0pky">*none*</td>
+    <td class="tg-0pky">latency was 93ms, have a stellar day</td>
+    <td class="tg-0pky"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">fun</td>
+    <td class="tg-0pky">fun</td>
+    <td class="tg-0pky">about</td>
+    <td class="tg-0pky">*none*</td>
+    <td class="tg-0pky">astral 1.0 (March 3 2023)<br>Host CPU: Apple M1 Max (ARM_8)<br>Host Python: 3.10.6.final.0 (64 bit)</td>
+    <td class="tg-0pky"></td>
   </tr>
 </tbody>
 </table>

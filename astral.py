@@ -12,7 +12,7 @@ token = str(os.getenv("TOKEN"))
 bot = commands.Bot()
 
 #load cogs
-cogs_list = ['osuUtils', 'fun']
+cogs_list = ['osuUtils', 'fun', 'lookupUtils']
 for cog in cogs_list:
     bot.load_extension(f'cogs.{cog}')
 
