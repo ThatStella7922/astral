@@ -6,6 +6,8 @@ import os
 from requests.exceptions import HTTPError
 from discord.ext import commands
 
+print(f"astral")
+
 # console markers
 success = '[√]'
 error = '[x]'
@@ -28,6 +30,6 @@ for cog in cogs_list:
 
 @bot.event
 async def on_ready():
-    print(f"{success} Bot init: {bot.user}")
+    print(f"{success} Bot sucessfully initialized as {bot.user}")
 
 bot.run(token)

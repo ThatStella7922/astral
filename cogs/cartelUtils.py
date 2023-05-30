@@ -2,6 +2,7 @@ import sqlite3
 import discord
 import requests
 import pymongo
+import sys
 from requests.exceptions import HTTPError
 from discord.commands import SlashCommandGroup
 from discord.ext import commands
@@ -12,11 +13,15 @@ success = '[√]'
 error = '[x]'
 
 # Initialize the DEETABASE
-myclient = pymongo.MongoClient("mongodb://192.168.69.3:27017/")
+try:
+    myclient = pymongo.MongoClient("mongodb://192.168.69.3:27017/")
+except:
+    print(f"{error} Database connection: Failed")
+    sys.exit(1)
 mydb = myclient["astral"]
 cartelMetadata = mydb["cartelmetadata"]
 cartelMembers = mydb["cartelmembers"]
-print(f"{success} Database init: probably")
+print(f"{success} Database connection: probably worked fine")
 
 class cartelUtils(commands.Cog):
     def __init__(self, bot):
@@ -44,8 +49,13 @@ class cartelUtils(commands.Cog):
         ctx,
         member: Option(float, "The user that will be set as cartel owner")
     ):
-        #cartelMetaTable.upsert(dict(ownerID=281503786986635265)) 
-        await ctx.respond(f"idk")
+        try:
+            cartelMetadata.up
+        except Exception as e:
+            print(e)
+            await ctx.respond(f"idk")
+            cartelMetadata.upsert(dict(ownerID=281503786986635265)) 
+            
 
     @ownerUtilsGroup.command(name="show",description="Shows the current owner of the cartel")
     async def show(self, ctx): 

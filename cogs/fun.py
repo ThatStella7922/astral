@@ -9,9 +9,11 @@ from discord.ext import commands
 
 #load basic bot info from disk
 dotenv.load_dotenv()
-botVersion = "1.0.1"
-botVersionDate = "March 22 2023"
+botVersion = "1.0.2"
+botVersionDate = "May 30 2023"
 botName = str(os.getenv("botName"))
+
+print(f"version {botVersion}")
 
 class fun(commands.Cog):
     def __init__(self, bot):
