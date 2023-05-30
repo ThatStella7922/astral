@@ -7,6 +7,7 @@ Take care of any packages by installing [requirements.txt](requirements.txt)
 In the root, create a .env containing the following:
 ```
 TOKEN = <your bot token>
+OWNERID = <your user id>
 ```
 
 

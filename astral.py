@@ -1,23 +1,35 @@
 import discord
 import requests
 import dotenv
+import sqlite3
 import os
 from requests.exceptions import HTTPError
 from discord.ext import commands
 
-#load token from disk
+print(f"astral")
+
+# console markers
+success = '[√]'
+error = '[x]'
+
+#load token and owner from disk
 dotenv.load_dotenv()
 token = str(os.getenv("TOKEN"))
+ownerid = str(os.getenv("OWNERID"))
 
-bot = commands.Bot()
+# bot setup
+intents = discord.Intents.default()
+intents.members = True
+
+bot = commands.Bot(intents=intents)
 
 #load cogs
-cogs_list = ['osuUtils', 'fun', 'lookupUtils']
+cogs_list = ['osuUtils', 'fun', 'lookupUtils', 'cartelUtils']
 for cog in cogs_list:
     bot.load_extension(f'cogs.{cog}')
 
 @bot.event
 async def on_ready():
-    print(f"{bot.user} started succesfully")
+    print(f"{success} Bot sucessfully initialized as {bot.user}")
 
 bot.run(token)
