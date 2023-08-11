@@ -1,12 +1,13 @@
 # wtf is this db
 astral's database should be in the `db` folder
 
-Table structures follow
+Table structures follow for if you need to access to the DB or something
 
 ## cartelmetadata
-| ID            | cartelOwnerFriendlyName | cartelOwnerId             |
+| ID            | columns                 |                           |
 | ------------- | ----------------------- | ------------------------- |
-| 1             | MyName#1234             | 1234567890 (just some id) |
+| 1             | cartelOwnerFriendlyName | cartelOwnerId             |
+| 2             | cartelName              |                           |
 
 
 ## cartelmembers

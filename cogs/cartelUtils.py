@@ -41,7 +41,8 @@ class cartelUtils(commands.Cog):
     ## End group
 
     ## Owner Utils Commands
-    @ownerUtilsGroup.command(name="set",description="Set a new cartel owner immediately")
+    @ownerUtilsGroup.command(name="set",description="Set a new cartel owner immediately - requires bot owner")
+    @commands.is_owner()
     async def set(
         self,
         ctx,

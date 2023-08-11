@@ -1,9 +1,6 @@
 import discord
-import requests
 import dotenv
-import sqlite3
 import os
-from requests.exceptions import HTTPError
 from discord.ext import commands
 
 print(f"astral")
@@ -21,7 +18,7 @@ ownerid = str(os.getenv("OWNERID"))
 intents = discord.Intents.default()
 intents.members = True
 
-bot = commands.Bot(intents=intents)
+bot = commands.Bot(intents=intents, owner_ids=[ownerid])
 
 #load cogs
 cogs_list = ['osuUtils', 'fun', 'lookupUtils', 'cartelUtils']
