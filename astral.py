@@ -24,7 +24,7 @@ intents.members = True
 bot = commands.Bot(intents=intents)
 
 #load cogs
-cogs_list = ['osuUtils', 'fun', 'lookupUtils', 'cartelUtils']
+cogs_list = ['osuUtils', 'fun', 'lookupUtils']
 for cog in cogs_list:
     bot.load_extension(f'cogs.{cog}')
 

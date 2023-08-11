@@ -3,9 +3,11 @@ import requests
 import dotenv
 import os
 import cpuinfo
+import random
 from requests.exceptions import HTTPError
 from discord.commands import SlashCommandGroup
 from discord.ext import commands
+from discord import Option
 
 #load basic bot info from disk
 dotenv.load_dotenv()
@@ -18,6 +20,21 @@ class fun(commands.Cog):
         self.bot = bot
 
     funGroup = SlashCommandGroup("fun", "Various little commands of dubious utility")
+
+    @funGroup.command(name="kiss",description="kiss someone (girlkissing preferred)")
+    async def ping(
+        self, 
+        ctx,
+        member: Option(discord.Member, "person to be kissed")
+    ): 
+        randomNum = random.randint(0, 2)
+        match randomNum:
+            case 0:
+                await ctx.respond(f"*{ctx.author.name}*, you kiss *{member.name}*.")
+            case 1:
+                await ctx.respond(f"*{ctx.author.name}*, you take *{member.name}* into your arms for a passionate kiss.")
+            case 2:
+                await ctx.respond(f"*{ctx.author.name}*, you lock eyes with *{member.name}*, then lean in for a kiss.")
 
     @funGroup.command(name="ping",description="i sure wonder how slow the bot is today!")
     async def ping(self, ctx): 
