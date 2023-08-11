@@ -11,8 +11,8 @@ from discord import Option
 
 #load basic bot info from disk
 dotenv.load_dotenv()
-botVersion = "1.0.1"
-botVersionDate = "March 22 2023"
+botVersion = "1.0.2"
+botVersionDate = "Aug 11 2023"
 botName = str(os.getenv("botName"))
 
 class fun(commands.Cog):
