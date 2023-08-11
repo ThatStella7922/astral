@@ -20,6 +20,8 @@ class fun(commands.Cog):
         self.bot = bot
 
     funGroup = SlashCommandGroup("fun", "Various little commands of dubious utility")
+    
+    # astral will not! be getting a sex update
 
     @funGroup.command(name="kiss",description="kiss someone (girlkissing preferred)")
     async def ping(
@@ -27,14 +29,20 @@ class fun(commands.Cog):
         ctx,
         member: Option(discord.Member, "person to be kissed")
     ): 
+        # no kissing yourself
+        if ctx.author == member:
+            await ctx.respond(f"{ctx.author.mention}, you can't kiss yourself!")
+            return
+
         randomNum = random.randint(0, 2)
+
         match randomNum:
             case 0:
-                await ctx.respond(f"*{ctx.author.name}*, you kiss *{member.name}*.")
+                await ctx.respond(f"*{ctx.author.display_name}*, you kiss *{member.display_name}*.")
             case 1:
-                await ctx.respond(f"*{ctx.author.name}*, you take *{member.name}* into your arms for a passionate kiss.")
+                await ctx.respond(f"*{ctx.author.display_name}*, you take *{member.display_name}* into your arms for a passionate kiss.")
             case 2:
-                await ctx.respond(f"*{ctx.author.name}*, you lock eyes with *{member.name}*, then lean in for a kiss.")
+                await ctx.respond(f"*{ctx.author.display_name}*, you lock eyes with *{member.display_name}*, then lean in for a kiss.")
 
     @funGroup.command(name="ping",description="i sure wonder how slow the bot is today!")
     async def ping(self, ctx): 
