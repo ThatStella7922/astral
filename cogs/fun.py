@@ -29,13 +29,34 @@ class fun(commands.Cog):
         ctx,
         member: Option(discord.Member, "person to be kissed")
     ): 
+        
+        # special cases!
+        match ctx.author.id:
+            # no Eva
+            case 626397784169381888:
+                await ctx.respond("shut up eva i'm going to have you up against a wall soon enough just Wait")
+                await ctx.respond(":3")
+                return
+            
+            # no indie scrub racing
+            case 380728181294104576 | 635355674959675403 | 354059736049778708:
+                await ctx.respond(f"*{ctx.author.display_name}*, you fruity fuck")
+                return
+            
+            # special case for loppa
+            case 502595728896688128:
+                await ctx.respond("you will never find love, loppa")
+                return
+            
+
         # no kissing yourself
         if ctx.author == member:
             await ctx.respond(f"{ctx.author.mention}, you can't kiss yourself!")
             return
 
-        randomNum = random.randint(0, 2)
+        randomNum = random.randint(0, 3)
 
+        #move to list
         match randomNum:
             case 0:
                 await ctx.respond(f"*{ctx.author.display_name}*, you kiss *{member.display_name}*.")
@@ -43,6 +64,8 @@ class fun(commands.Cog):
                 await ctx.respond(f"*{ctx.author.display_name}*, you take *{member.display_name}* into your arms for a passionate kiss.")
             case 2:
                 await ctx.respond(f"*{ctx.author.display_name}*, you lock eyes with *{member.display_name}*, then lean in for a kiss.")
+            case 3:
+                await ctx.respond(f"*{ctx.author.display_name}*, you pin *{member.display_name}*'s shoulders onto the wall next to you and come in for a kiss.")
 
     @funGroup.command(name="ping",description="i sure wonder how slow the bot is today!")
     async def ping(self, ctx): 
