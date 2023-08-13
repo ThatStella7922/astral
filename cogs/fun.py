@@ -28,7 +28,7 @@ class fun(commands.Cog):
         self, 
         ctx,
         member: Option(discord.Member, "Who are you going to kiss?", required=True),
-        allowfruity: Option(bool, description="Allow fruity responses? recipient should be comfortable being pinned against a wall if enabled..", default=False, required=False)
+        allowfruity: Option(str, description="Allow fruity responses? recipient should be comfortable being pinned against a wall if enabled..", choices=["Yes and force a fruity response", "Yes", "No"], required=False)
     ):  
         # no kissing my Eva
         if member.id == 626397784169381888 and ctx.author.id != 281503786986635265:
@@ -68,8 +68,10 @@ class fun(commands.Cog):
             f"*{ctx.author.display_name}*, you pin *{member.display_name}*'s shoulders onto the wall next to you and come in for a kiss."
             ]
         
-        if allowfruity == True:
+        if allowfruity == "Yes":
             kissMsg = secrets.choice([secrets.choice(fruityResponses), secrets.choice(allCasesResponses)])
+        elif allowfruity == "Yes and force a fruity response":
+            kissMsg = secrets.choice(fruityResponses)
         else:
             kissMsg = secrets.choice(allCasesResponses)
         
