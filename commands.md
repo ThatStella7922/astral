@@ -42,6 +42,14 @@ Commands are organized into cogs, and the bot only uses slash commands, which is
   <tr>
     <td class="tg-0pky">fun</td>
     <td class="tg-0pky">fun</td>
+    <td class="tg-0pky">kiss</td>
+    <td class="tg-0pky">member (<span style="font-weight:bold">Member</span>) and allowfruity (Optional <span style="font-weight:bold">Bool</span>)</td>
+    <td class="tg-0pky">(this output taken with allowfruity set to False): stella@AICOMEVA.local, you kiss eva@AICOMEVA.local.</td>
+    <td class="tg-0pky"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">fun</td>
+    <td class="tg-0pky">fun</td>
     <td class="tg-0pky">ping</td>
     <td class="tg-0pky">*none*</td>
     <td class="tg-0pky">latency was 93ms, have a stellar day</td>

@@ -23,49 +23,56 @@ class fun(commands.Cog):
     
     # astral will not! be getting a sex update
 
-    @funGroup.command(name="kiss",description="kiss someone (girlkissing preferred)")
+    @funGroup.command(name="kiss",description="Kiss someone (girlkissing preferred, but not required)")
     async def ping(
         self, 
         ctx,
-        member: Option(discord.Member, "person to be kissed")
-    ): 
-        
+        member: Option(discord.Member, "Who are you going to kiss?", required=True),
+        allowfruity: Option(bool, description="Allow fruity responses? whoever you kiss should be comfortable being pinned against a wall if you enable this..", default=False, required=False)
+    ):  
+        # no kissing my Eva
+        if member.id == 626397784169381888 and ctx.author.id != 281503786986635265:
+            await ctx.respond("Don't kiss <@281503786986635265>'s wife!!")
+            return
+
         # special cases!
         match ctx.author.id:
             # no Eva
             case 626397784169381888:
                 await ctx.respond("shut up eva i'm going to have you up against a wall soon enough just Wait")
-                await ctx.respond(":3")
+                await ctx.send(":3")
                 return
             
             # no indie scrub racing
-            case 380728181294104576 | 635355674959675403 | 354059736049778708:
-                await ctx.respond(f"*{ctx.author.display_name}*, you fruity fuck")
-                return
+            #case 380728181294104576 | 635355674959675403 | 354059736049778708:
+                #await ctx.respond(f"*{ctx.author.display_name}*, you fruity fuck")
+                #return
             
             # special case for loppa
             case 502595728896688128:
                 await ctx.respond("you will never find love, loppa")
                 return
             
-
         # no kissing yourself
         if ctx.author == member:
             await ctx.respond(f"{ctx.author.mention}, you can't kiss yourself!")
             return
+        
+        allCasesResponses = [
+            f"*{ctx.author.display_name}*, you kiss *{member.display_name}*."
+        ]
 
-        randomNum = random.randint(0, 3)
-
-        #move to list
-        match randomNum:
-            case 0:
-                await ctx.respond(f"*{ctx.author.display_name}*, you kiss *{member.display_name}*.")
-            case 1:
-                await ctx.respond(f"*{ctx.author.display_name}*, you take *{member.display_name}* into your arms for a passionate kiss.")
-            case 2:
-                await ctx.respond(f"*{ctx.author.display_name}*, you lock eyes with *{member.display_name}*, then lean in for a kiss.")
-            case 3:
-                await ctx.respond(f"*{ctx.author.display_name}*, you pin *{member.display_name}*'s shoulders onto the wall next to you and come in for a kiss.")
+        fruityResponses = [
+            f"*{ctx.author.display_name}*, you take *{member.display_name}* into your arms for a passionate kiss.",
+            f"*{ctx.author.display_name}*, you lock eyes with *{member.display_name}*, then lean in for a kiss.",
+            f"*{ctx.author.display_name}*, you pin *{member.display_name}*'s shoulders onto the wall next to you and come in for a kiss."]
+        
+        if allowfruity == True:
+            kissMsg = random.choice([random.choice(allCasesResponses), random.choice(fruityResponses)])
+        else:
+            kissMsg = random.choice(allCasesResponses)
+        
+        await ctx.respond(kissMsg)
 
     @funGroup.command(name="ping",description="i sure wonder how slow the bot is today!")
     async def ping(self, ctx): 
