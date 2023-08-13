@@ -3,7 +3,7 @@ import requests
 import dotenv
 import os
 import cpuinfo
-import random
+import secrets
 from requests.exceptions import HTTPError
 from discord.commands import SlashCommandGroup
 from discord.ext import commands
@@ -65,12 +65,13 @@ class fun(commands.Cog):
         fruityResponses = [
             f"*{ctx.author.display_name}*, you take *{member.display_name}* into your arms for a passionate kiss.",
             f"*{ctx.author.display_name}*, you lock eyes with *{member.display_name}*, then lean in for a kiss.",
-            f"*{ctx.author.display_name}*, you pin *{member.display_name}*'s shoulders onto the wall next to you and come in for a kiss."]
+            f"*{ctx.author.display_name}*, you pin *{member.display_name}*'s shoulders onto the wall next to you and come in for a kiss."
+            ]
         
         if allowfruity == True:
-            kissMsg = random.choice([random.choice(allCasesResponses), random.choice(fruityResponses)])
+            kissMsg = secrets.choice([secrets.choice(fruityResponses), secrets.choice(allCasesResponses)])
         else:
-            kissMsg = random.choice(allCasesResponses)
+            kissMsg = secrets.choice(allCasesResponses)
         
         await ctx.respond(kissMsg)
 
