@@ -28,7 +28,7 @@ class fun(commands.Cog):
         self, 
         ctx,
         member: Option(discord.Member, "Who are you going to kiss?", required=True),
-        allowfruity: Option(bool, description="Allow fruity responses? whoever you kiss should be comfortable being pinned against a wall if you enable this..", default=False, required=False)
+        allowfruity: Option(bool, description="Allow fruity responses? recipient should be comfortable being pinned against a wall if enabled..", default=False, required=False)
     ):  
         # no kissing my Eva
         if member.id == 626397784169381888 and ctx.author.id != 281503786986635265:
