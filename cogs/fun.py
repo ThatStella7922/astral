@@ -12,7 +12,7 @@ from discord import Option
 #load basic bot info from disk
 dotenv.load_dotenv()
 botVersion = "1.0.2"
-botVersionDate = "Aug 11 2023"
+botVersionDate = "Aug 15 2023"
 botName = str(os.getenv("botName"))
 
 class fun(commands.Cog):
@@ -42,11 +42,6 @@ class fun(commands.Cog):
                 await ctx.respond("shut up eva i'm going to have you up against a wall soon enough just Wait")
                 await ctx.send(":3")
                 return
-            
-            # no indie scrub racing
-            #case 380728181294104576 | 635355674959675403 | 354059736049778708:
-                #await ctx.respond(f"*{ctx.author.display_name}*, you fruity fuck")
-                #return
             
             # special case for loppa
             case 502595728896688128:
@@ -79,12 +74,19 @@ class fun(commands.Cog):
 
     @funGroup.command(name="ping",description="i sure wonder how slow the bot is today!")
     async def ping(self, ctx): 
-        await ctx.respond(f"latency was {round(self.bot.latency * 1000)}ms, have a stellar day")
+        responses = [
+            f"Latency was {round(self.bot.latency * 1000)}ms, have a stellar day",
+            f"Latency was {round(self.bot.latency * 1000)}ms, have a fruity day",
+            f"Latency was {round(self.bot.latency * 1000)}ms :3"
+        ]
+
+        await ctx.respond(secrets.choice(responses))
 
     @funGroup.command(name="about",description=f"Prints information about {botName}")
     async def about(self, ctx): 
         await ctx.defer()
-        await ctx.respond(f"*{botName}* {botVersion} ({botVersionDate})\nHost CPU: {cpuinfo.get_cpu_info()['brand_raw']} ({cpuinfo.get_cpu_info()['arch']})\nHost Python: {cpuinfo.get_cpu_info()['python_version']}")
+        cpuinfoVar = cpuinfo.get_cpu_info()
+        await ctx.respond(f"*{botName}* {botVersion} ({botVersionDate})\nHost CPU: {cpuinfoVar['brand_raw']} ({cpuinfoVar['arch_string_raw']}, {cpuinfoVar['count']} logical processors)\nHost Python: {cpuinfoVar['python_version']}")
 
 def setup(bot):
     bot.add_cog(fun(bot))
