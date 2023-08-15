@@ -4,6 +4,7 @@ import dotenv
 import os
 import cpuinfo
 import secrets
+from uwuipy import uwuipy
 from requests.exceptions import HTTPError
 from discord.commands import SlashCommandGroup
 from discord.ext import commands
@@ -11,7 +12,7 @@ from discord import Option
 
 #load basic bot info from disk
 dotenv.load_dotenv()
-botVersion = "1.0.2"
+botVersion = "1.0.3"
 botVersionDate = "Aug 15 2023"
 botName = str(os.getenv("botName"))
 
@@ -71,6 +72,23 @@ class fun(commands.Cog):
             kissMsg = secrets.choice(allCasesResponses)
         
         await ctx.respond(kissMsg)
+
+    @funGroup.command(name="uwuify",description="Uwuify text (example: The quick b-b-b-bwown (・\`ω\´・) ***screeches*** fox)")
+    async def ping(
+        self, 
+        ctx,
+        uwuifytext: Option(str, "Text to uwuify", required=True),
+        seed: Option(int, "Seed for uwuification (use an integer)", required=False),
+        stutterchance: Option(float, "Probability of stuttering a word", min_value=0, max_value=1.0, default=0.1, required=False),
+        facechance: Option(float, "Probability of adding a face like this one: (ᵕᴗ ᵕ⁎)", min_value=0, max_value=1.0, default=0.05, required=False),
+        actionchance: Option(float, "Probability of adding an action like this one: *screeches*", min_value=0, max_value=1.0, default=0.075, required=False),
+        exclamationchance: Option(float, "Probability of adding exclamations (not sure what this does)", min_value=0, max_value=1.0, default=1.0, required=False),
+        nsfw_actions: Option(bool, "Allow NSFW actions? (like *notices buldge*)", default=False, required=False)
+    ):
+        # Parameter details above taken from https://github.com/Cuprum77/uwuipy/blob/main/README.md
+
+        uwu = uwuipy(seed, stutterchance, facechance, actionchance, exclamationchance, nsfw_actions)
+        await ctx.respond(uwu.uwuify(uwuifytext))
 
     @funGroup.command(name="ping",description="i sure wonder how slow the bot is today!")
     async def ping(self, ctx): 

@@ -3,3 +3,4 @@ py-cpuinfo
 requests
 python-dotenv
 dataset
+uwuipy

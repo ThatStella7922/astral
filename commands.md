@@ -50,6 +50,14 @@ Commands are organized into cogs, and the bot only uses slash commands, which is
   <tr>
     <td class="tg-0pky">fun</td>
     <td class="tg-0pky">fun</td>
+    <td class="tg-0pky">uwuify</td>
+    <td class="tg-0pky">Too many to list, check out the uwuify function in cogs/fun.py</td>
+    <td class="tg-0pky">The quick b-b-b-bwown (・\`ω\´・) ***screeches*** fox jumps uvw t-t-t-the OwO wazy dog</td>
+    <td class="tg-0pky"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">fun</td>
+    <td class="tg-0pky">fun</td>
     <td class="tg-0pky">ping</td>
     <td class="tg-0pky">*none*</td>
     <td class="tg-0pky">latency was 93ms, have a stellar day</td>
