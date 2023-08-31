@@ -22,4 +22,4 @@ This should satisfy any static info that is stored in dotenvs.
 There is no database yet
 
 ## Run
-Just run astral.py with Python 3.9 or later
+Just run astral.py with Python 3.10 or later
