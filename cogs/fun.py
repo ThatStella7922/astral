@@ -12,8 +12,8 @@ from discord import Option
 
 #load basic bot info from disk
 dotenv.load_dotenv()
-botVersion = "1.0.3"
-botVersionDate = "Aug 15 2023"
+botVersion = "1.0.4"
+botVersionDate = "Aug 30 2023"
 botName = str(os.getenv("botName"))
 
 class fun(commands.Cog):
@@ -25,7 +25,7 @@ class fun(commands.Cog):
     # astral will not! be getting a sex update
 
     @funGroup.command(name="kiss",description="Kiss someone (girlkissing preferred, but not required)")
-    async def ping(
+    async def kiss(
         self, 
         ctx,
         member: Option(discord.Member, "Who are you going to kiss?", required=True),
@@ -74,20 +74,25 @@ class fun(commands.Cog):
         await ctx.respond(kissMsg)
 
     @funGroup.command(name="uwuify",description="Uwuify text (example: The quick b-b-b-bwown (・\`ω\´・) ***screeches*** fox)")
-    async def ping(
+    async def uwuify(
         self, 
         ctx,
         uwuifytext: Option(str, "Text to uwuify", required=True),
-        seed: Option(int, "Seed for uwuification (use an integer)", required=False),
-        stutterchance: Option(float, "Probability of stuttering a word", min_value=0, max_value=1.0, default=0.1, required=False),
-        facechance: Option(float, "Probability of adding a face like this one: (ᵕᴗ ᵕ⁎)", min_value=0, max_value=1.0, default=0.05, required=False),
-        actionchance: Option(float, "Probability of adding an action like this one: *screeches*", min_value=0, max_value=1.0, default=0.075, required=False),
-        exclamationchance: Option(float, "Probability of adding exclamations (not sure what this does)", min_value=0, max_value=1.0, default=1.0, required=False),
+        seed: Option(int, "Uwuification seed (use an integer)", required=False),
+        stutterchance: Option(float, "Word stutter probability (0-100)", min_value=0, max_value=100, default=10.0, required=False),
+        facechance: Option(float, "Probability of a face like: (ᵕᴗ ᵕ⁎) (0-100)", min_value=0, max_value=100, default=5.0, required=False),
+        actionchance: Option(float, "Probability of an action like: *screeches* (0-100)", min_value=0, max_value=100, default=7.5, required=False),
+        exclamationchance: Option(float, "Exclamation probability (0-100)", min_value=0, max_value=100, default=100, required=False),
         nsfw_actions: Option(bool, "Allow NSFW actions? (like *notices buldge*)", default=False, required=False)
     ):
         # Parameter details above taken from https://github.com/Cuprum77/uwuipy/blob/main/README.md
 
-        uwu = uwuipy(seed, stutterchance, facechance, actionchance, exclamationchance, nsfw_actions)
+        args = [stutterchance, facechance, actionchance, exclamationchance]
+        argsDivided = []
+        for x in args:
+            argsDivided.append(x / 100)
+
+        uwu = uwuipy(seed, argsDivided[0], argsDivided[1], argsDivided[2], argsDivided[3], nsfw_actions)
         await ctx.respond(uwu.uwuify(uwuifytext))
 
     @funGroup.command(name="ping",description="i sure wonder how slow the bot is today!")
@@ -104,7 +109,7 @@ class fun(commands.Cog):
     async def about(self, ctx): 
         await ctx.defer()
         cpuinfoVar = cpuinfo.get_cpu_info()
-        await ctx.respond(f"*{botName}* {botVersion} ({botVersionDate})\nHost CPU: {cpuinfoVar['brand_raw']} ({cpuinfoVar['arch_string_raw']}, {cpuinfoVar['count']} logical processors)\nHost Python: {cpuinfoVar['python_version']}")
+        await ctx.respond(f"*{botName}* {botVersion} ({botVersionDate})\nHost CPU: {cpuinfoVar['brand_raw']} ({cpuinfoVar['arch_string_raw']}, {cpuinfoVar['count']} logical processors)\nHost Python: {cpuinfoVar['python_version']}\n\nSource code: <https://github.com/ThatStella7922/astral>")
 
 def setup(bot):
     bot.add_cog(fun(bot))
