@@ -12,8 +12,8 @@ from discord import Option
 
 #load basic bot info from disk
 dotenv.load_dotenv()
-botVersion = "1.0.4"
-botVersionDate = "Aug 30 2023"
+botVersion = "1.0.5"
+botVersionDate = "September 25 2023"
 botName = str(os.getenv("botName"))
 
 class fun(commands.Cog):
@@ -95,6 +95,20 @@ class fun(commands.Cog):
         uwu = uwuipy(seed, argsDivided[0], argsDivided[1], argsDivided[2], argsDivided[3], nsfw_actions)
         await ctx.respond(uwu.uwuify(uwuifytext))
 
+    @funGroup.command(name="mock",description=f"Mock text (example: tHe qUiCk bRoWn fOx)")
+    async def mock(
+        self,
+        ctx,
+        mocktext: Option(str, "Text to mock", required=True),
+    ): 
+        res = ""
+        for grunkle in range(len(mocktext)):
+            if not grunkle % 2:
+                res = res + mocktext[grunkle].upper()
+            else:
+                res = res + mocktext[grunkle].lower()
+        await ctx.respond(f"{res}")
+
     @funGroup.command(name="ping",description="i sure wonder how slow the bot is today!")
     async def ping(self, ctx): 
         responses = [
@@ -109,7 +123,7 @@ class fun(commands.Cog):
     async def about(self, ctx): 
         await ctx.defer()
         cpuinfoVar = cpuinfo.get_cpu_info()
-        await ctx.respond(f"*{botName}* {botVersion} ({botVersionDate})\nHost CPU: {cpuinfoVar['brand_raw']} ({cpuinfoVar['arch_string_raw']}, {cpuinfoVar['count']} logical processors)\nHost Python: {cpuinfoVar['python_version']}\n\nSource code: <https://github.com/ThatStella7922/astral>")
+        await ctx.respond(f"*{botName}* {botVersion} ({botVersionDate})\n\nHost CPU Info:\n```Model: {cpuinfoVar['brand_raw']}\nLogical Processors: {cpuinfoVar['count']}\nArchitecture: {cpuinfoVar['arch_string_raw']}```\nHost Python: {cpuinfoVar['python_version']}\nSource code: <https://github.com/ThatStella7922/astral>")
 
 def setup(bot):
     bot.add_cog(fun(bot))
