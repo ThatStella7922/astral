@@ -4,3 +4,4 @@ requests
 python-dotenv
 dataset
 uwuipy
+audioop-lts; python_version>='3.13'
